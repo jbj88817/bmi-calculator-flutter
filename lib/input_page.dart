@@ -31,39 +31,35 @@ class _InputPageState extends State<InputPage> {
             child: Row(
               children: [
                 Expanded(
-                  child: GestureDetector(
-                    onTap: () {
+                  child: ReusableCard(
+                    color: selectedGender == Gender.MALE
+                        ? activeCardColor
+                        : inActiveCardColor,
+                    cardChild: IconContent(
+                      icon: FontAwesomeIcons.mars,
+                      label: 'MALE',
+                    ),
+                    onPress: () {
                       setState(() {
                         selectedGender = Gender.MALE;
                       });
                     },
-                    child: ReusableCard(
-                      color: selectedGender == Gender.MALE
-                          ? activeCardColor
-                          : inActiveCardColor,
-                      cardChild: IconContent(
-                        icon: FontAwesomeIcons.mars,
-                        label: 'MALE',
-                      ),
-                    ),
                   ),
                 ),
                 Expanded(
-                  child: GestureDetector(
-                    onTap: () {
+                  child: ReusableCard(
+                    color: selectedGender == Gender.FEMALE
+                        ? activeCardColor
+                        : inActiveCardColor,
+                    cardChild: IconContent(
+                      icon: FontAwesomeIcons.venus,
+                      label: 'FEMALE',
+                    ),
+                    onPress: () {
                       setState(() {
                         selectedGender = Gender.FEMALE;
                       });
                     },
-                    child: ReusableCard(
-                      color: selectedGender == Gender.FEMALE
-                          ? activeCardColor
-                          : inActiveCardColor,
-                      cardChild: IconContent(
-                        icon: FontAwesomeIcons.venus,
-                        label: 'FEMALE',
-                      ),
-                    ),
                   ),
                 ),
               ],
