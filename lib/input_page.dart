@@ -149,14 +149,11 @@ class _InputPageState extends State<InputPage> {
               alignment: Alignment.center,
               child: Text(
                 'CALCULATE',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 20.0,
-                ),
+                style: kLargeButtonTextStyle,
               ),
               color: kBottomContainerColor,
               margin: EdgeInsets.only(top: 10.0),
+              padding: EdgeInsets.only(bottom: 20.0),
               width: double.infinity,
               height: kBottomContainerHeight,
             ),
