@@ -1,8 +1,8 @@
-import 'package:bmi_calculator/round_icon_button.dart';
+import 'package:bmi_calculator/components/round_icon_button.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-import 'constants.dart';
+import '../constants.dart';
 
 class PlusMinusCard extends StatefulWidget {
   const PlusMinusCard({Key? key, required this.label, this.initValue = 0})
