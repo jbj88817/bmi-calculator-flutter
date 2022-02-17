@@ -5,11 +5,16 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../constants.dart';
 
 class PlusMinusCard extends StatefulWidget {
-  const PlusMinusCard({Key? key, required this.label, this.initValue = 0})
+  const PlusMinusCard(
+      {Key? key,
+      required this.label,
+      this.initValue = 0,
+      required this.callback})
       : super(key: key);
 
   final int initValue;
   final String label;
+  final IntCallback callback;
 
   @override
   _PlusMinusCardState createState() => _PlusMinusCardState();
@@ -44,6 +49,7 @@ class _PlusMinusCardState extends State<PlusMinusCard> {
               onPressed: () {
                 setState(() {
                   value--;
+                  widget.callback(value);
                 });
               },
               icon: FontAwesomeIcons.minus,
@@ -55,6 +61,7 @@ class _PlusMinusCardState extends State<PlusMinusCard> {
               onPressed: () {
                 setState(() {
                   value++;
+                  widget.callback(value);
                 });
               },
               icon: FontAwesomeIcons.plus,
@@ -65,3 +72,5 @@ class _PlusMinusCardState extends State<PlusMinusCard> {
     );
   }
 }
+
+typedef void IntCallback(int val);

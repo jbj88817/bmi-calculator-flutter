@@ -1,3 +1,4 @@
+import 'package:bmi_calculator/calculate_brain.dart';
 import 'package:bmi_calculator/components/plus_minus_card.dart';
 import 'package:bmi_calculator/components/reusable_card.dart';
 import 'package:bmi_calculator/screens/result_page.dart';
@@ -18,6 +19,7 @@ class InputPage extends StatefulWidget {
 class _InputPageState extends State<InputPage> {
   Gender? selectedGender;
   int height = 180;
+  int weight = 60;
 
   @override
   Widget build(BuildContext context) {
@@ -126,6 +128,7 @@ class _InputPageState extends State<InputPage> {
                     cardChild: PlusMinusCard(
                       label: 'WEIGHT',
                       initValue: 60,
+                      callback: (val) => weight = val,
                     ),
                   ),
                 ),
@@ -135,6 +138,7 @@ class _InputPageState extends State<InputPage> {
                     cardChild: PlusMinusCard(
                       label: 'AGE',
                       initValue: 20,
+                      callback: (val) {},
                     ),
                   ),
                 ),
@@ -143,8 +147,17 @@ class _InputPageState extends State<InputPage> {
           ),
           BottomButton(
             onTap: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => ResultPage()));
+              CalculatorBrain calc = CalculatorBrain(height, weight);
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => ResultPage(
+                    bmiResult: calc.calculateBMI(),
+                    resultText: calc.getResult(),
+                    interpretation: calc.getInterpretation(),
+                  ),
+                ),
+              );
             },
             buttonText: 'CALCULATE',
           )
